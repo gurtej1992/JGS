@@ -8,7 +8,7 @@ function SignupScreen({ navigation }) {
       navigation.navigate('Login')
     }
     function handleSignup(){
-      navigation.navigate('MyTabs')
+      navigation.navigate('LandingNav')
     }
 
 

@@ -4,7 +4,7 @@ import { GlobalStyles } from "../constants/style";
 
 function LoginScreen({ navigation }) {
   function handleSignin(){
-    navigation.navigate('MyTabs')
+    navigation.navigate('LandingNav', { screen: 'MyTabs' })
   }
   function handleSignup(){
     navigation.navigate('Signup')

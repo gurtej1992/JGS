@@ -2,6 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet } from 'react-native';
 import HomeScreen from './screens/HomeScreen';
@@ -14,16 +15,17 @@ import MusicScreen from './screens/MusicScreen';
 import { GlobalStyles } from './constants/style';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import NewsScreen from './screens/NewsScreen';
+import ProfileScreen from './screens/ProfileScreen';
 const Stack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 const Drawer = createDrawerNavigator();
 
-function MyDrawer() {
+function LandingNav() {
   return (
     <Drawer.Navigator>
-      {/* <Drawer.Screen name="Feed" component={Feed} />
-      <Drawer.Screen name="Article" component={Article} /> */}
+      <Drawer.Screen name="MyTabs" component={MyTabs} />
+      <Drawer.Screen name="Profile" component={ProfileScreen} />
     </Drawer.Navigator>
   );
 }
@@ -83,7 +85,7 @@ function MyStack() {
       <Stack.Screen name="Signup" component={SignupScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Welcome" component={WelcomeScreen}/>
-      <Stack.Screen name="MyTabs" component={MyTabs} />
+      <Stack.Screen name="LandingNav" component={LandingNav} />
     </Stack.Navigator>
   );
 }
