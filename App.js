@@ -24,7 +24,7 @@ const Drawer = createDrawerNavigator();
 function LandingNav() {
   return (
     <Drawer.Navigator>
-      <Drawer.Screen name="MyTabs" component={MyTabs} />
+      <Drawer.Screen name="MyTabs" component={MyTabs}  options={{title : 'Home'}}/>
       <Drawer.Screen name="Profile" component={ProfileScreen} />
     </Drawer.Navigator>
   );
