@@ -5,26 +5,24 @@ import { GlobalStyles } from '../constants/style';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 function Item({ item }) {
-  return (
-    <View style={styles.listItem}>
-        <View style={{flex:1,justifyContent:'center', marginRight:20}}>
-        <Image source={{uri:item.photo}}  style={{width:80, height:80,borderRadius:40}} />
-        </View>
-      <View style={{flex:4}}>
-      <View style={{flexDirection:'row',flex:1,alignItems:'center', justifyContent:'space-between'}}>
-        <Text style={styles.text}>17-May-2022</Text>
-        <TouchableOpacity>
-        <Ionicons name="share" size={24} color={GlobalStyles.colors.accent700} />
-      </TouchableOpacity>
+    return (
+        <View style={styles.listItem}>
+            <View style={{ flex: 1, justifyContent: 'center', marginRight: 20 }}>
+                <Image source={{ uri: item.photo }} style={{ width: 80, height: 80, borderRadius: 40 }} />
             </View>
- 
-      
-      <View style={{flex:3}}>
-        <Text style={styles.text}>{item.position}</Text>
-      </View>
-      </View>
-    </View>
-  );
+            <View style={{ flex: 4 }}>
+                <View style={{ flexDirection: 'row', flex: 1, alignItems: 'center', justifyContent: 'space-between' }}>
+                    <Text style={styles.text}>17-May-2022</Text>
+                    <TouchableOpacity>
+                        <Ionicons name="share" size={24} color={GlobalStyles.colors.accent700} />
+                    </TouchableOpacity>
+                </View>
+                <View style={{ flex: 3 }}>
+                    <Text style={styles.text}>{item.position}</Text>
+                </View>
+            </View>
+        </View>
+    );
 }
 var data = [
     {
@@ -88,37 +86,37 @@ var data = [
         "photo": "https:\/\/randomuser.me\/api\/portraits\/women\/26.jpg"
     }
 ]
-function NewsScreen(){ 
-      const [data2, setData] = React.useState(data);
-        return (
-          <View style={styles.container}>
+function NewsScreen() {
+    const [data2, setData] = React.useState(data);
+    return (
+        <View style={styles.container}>
             <FlatList
-              style={{flex:1}}
-              data={data2}
-              renderItem={({ item }) => <Item item={item}/>}
-              keyExtractor={item => item.email}
+                style={{ flex: 1 }}
+                data={data2}
+                renderItem={({ item }) => <Item item={item} />}
+                keyExtractor={item => item.email}
             />
-          </View>
-        );
+        </View>
+    );
 }
-      
-    
-    const styles = StyleSheet.create({
-      container: {
+
+
+const styles = StyleSheet.create({
+    container: {
         flex: 1,
         backgroundColor: GlobalStyles.colors.accent500,
-      },
-      listItem:{
-        marginVertical:5,
-        padding:10,
-        backgroundColor:"#FFF",
-        flex:1,
-        alignSelf:"center",
-        flexDirection:"row",
-        borderRadius:5
-      },
-      text:{
-        color : GlobalStyles.colors.accent700
-      }
-    });
+    },
+    listItem: {
+        marginVertical: 5,
+        padding: 10,
+        backgroundColor: "#FFF",
+        flex: 1,
+        alignSelf: "center",
+        flexDirection: "row",
+        borderRadius: 5
+    },
+    text: {
+        color: GlobalStyles.colors.accent700
+    }
+});
 export default NewsScreen;
