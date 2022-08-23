@@ -23,7 +23,16 @@ const Drawer = createDrawerNavigator();
 
 function LandingNav() {
   return (
-    <Drawer.Navigator>
+    <Drawer.Navigator
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: GlobalStyles.colors.primaryRed,
+      },
+      headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+    }}>
       <Drawer.Screen name="MyTabs" component={MyTabs}  options={{title : 'Home'}}/>
       <Drawer.Screen name="Profile" component={ProfileScreen} />
     </Drawer.Navigator>
