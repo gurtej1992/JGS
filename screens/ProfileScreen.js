@@ -1,9 +1,11 @@
-import { View, Image, Text, StyleSheet } from "react-native";
+import { View, Image, Text, StyleSheet,ScrollView } from "react-native";
+import { TextInput } from "react-native-paper";
 import { GlobalStyles } from "../constants/style";
 
 function ProfileScreen() {
     return (
         <View style={styles.container}>
+            <ScrollView bounces={false}>
             <View style={styles.header}>
                 <Image source={{ uri: "https:\/\/images.unsplash.com\/photo-1494790108377-be9c29b29330?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=707b9c33066bf8808c934c8ab394dff6" }} style={styles.profileImg} />
                 <Text style={styles.txtName}>RAJAT JAIN</Text>
@@ -27,8 +29,15 @@ function ProfileScreen() {
                 </View>
             </View>
             <View style={styles.body}>
-
+            <TextInput style={styles.fields} activeUnderlineColor= {GlobalStyles.colors.primaryRed} label="Full Name"/>
+            <TextInput style={styles.fields} activeUnderlineColor= {GlobalStyles.colors.primaryRed} label="Address"/>
+            <TextInput style={styles.fields} activeUnderlineColor= {GlobalStyles.colors.primaryRed} label="State"/>
+            <TextInput style={styles.fields} activeUnderlineColor= {GlobalStyles.colors.primaryRed} label="City"/>
+            <TextInput style={styles.fields} activeUnderlineColor= {GlobalStyles.colors.primaryRed} label="Pincode"/>
+            <TextInput style={styles.fields} activeUnderlineColor= {GlobalStyles.colors.primaryRed} label="Phone"/>
+            <TextInput style={styles.fields} activeUnderlineColor= {GlobalStyles.colors.primaryRed} label="Email"/>
             </View>
+            </ScrollView>
         </View>
     );
 }
@@ -43,21 +52,23 @@ const styles = StyleSheet.create({
         backgroundColor: GlobalStyles.colors.primaryRed,
     },
     body: {
+        margin: 20,
+        padding: 5,
         flex: 2,
         backgroundColor: 'white',
     },
     profileImg: {
         marginTop:10,
-        width: 120,
-        height: 120,
+        width: 110,
+        height: 110,
         borderColor: GlobalStyles.colors.primaryYellow,
-        borderWidth: 2,
-        borderRadius: 60
+        borderWidth: 5,
+        borderRadius: 55
     },
     txtName: {
         marginTop: 10,
         color: 'white',
-        fontSize: 30,
+        fontSize: 28,
     },
     txtNo: {
         color: 'white',
@@ -69,6 +80,9 @@ const styles = StyleSheet.create({
         color: 'white',
         fontWeight: '500',
         fontSize: 16,
+    },
+    fields:{
+        marginBottom: 10
     }
 });
 export default ProfileScreen;
