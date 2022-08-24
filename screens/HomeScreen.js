@@ -40,7 +40,11 @@ function HomeScreen() {
                     </Card>
                 </View>
                 <View style={styles.footer}>
-                <Avatar.Icon size={24} icon="whatsapp" />
+                <Avatar.Icon style={styles.icon} size={52} icon="facebook" />
+                <Avatar.Icon style={styles.icon}  size={52} icon="instagram" />
+                <Avatar.Icon style={styles.icon}  size={52} icon="whatsapp" />
+                <Avatar.Icon style={styles.icon}  size={52} icon="twitter" />
+                <Avatar.Icon style={styles.icon}  size={52} icon="youtube" />
                 </View>
 
             </ScrollView>
@@ -63,15 +67,21 @@ const styles = StyleSheet.create({
         backgroundColor: GlobalStyles.colors.accent500,
     },
     footer: {
-        margin: 20,
+        margin: 0,
+        flexDirection:'row',
+        justifyContent:'space-evenly',
         padding: 5,
         flex: 2,
-        backgroundColor: 'green',
     },
     txtHindi: {
         marginTop: 2,
         fontWeight: '400',
         fontSize: 20,
+    },
+    icon: {
+        backgroundColor: GlobalStyles.colors.primaryRed,
+        borderColor: GlobalStyles.colors.accent1000,
+        borderWidth : 2
     },
 });
 export default HomeScreen;
