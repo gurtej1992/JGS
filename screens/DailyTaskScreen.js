@@ -31,9 +31,7 @@ function DailyTaskScreen() {
               <Text style={styles.text}>कितनी सामायिक की?</Text>
             </View>
 
-            <TextInput style={styles.input} style={styles.input}>
-              0
-            </TextInput>
+            <TextInput style={styles.input}>0</TextInput>
           </View>
           <Divider style={styles.divider} />
           <View style={styles.textView}>
