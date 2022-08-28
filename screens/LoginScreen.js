@@ -6,7 +6,6 @@ import React, { useState } from "react";
 import { showAlert } from "../util/helper";
 import qs from "qs";
 import Indicator from "../componets/ActivityIndicator";
-import { ActivityIndicator } from "react-native-paper";
 function LoginScreen({ navigation }) {
   const [phone, setPhone] = useState("");
   const [otp, setOtp] = useState("");

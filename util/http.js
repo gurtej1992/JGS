@@ -44,11 +44,5 @@ export async function sendInfoToBackend(url, payload) {
   const res = APIKit.post(constants.base.url + url, payload).catch((error) =>
     console.error(error)
   );
-  APIKit.get("test").catch((err) => {
-    console.log("Fc" + err.request._header);
-  });
-  // const res = Axios.post(constants.base.url + url, payload).catch((error) =>
-  //   console.error(error)
-  // );
   return res;
 }
