@@ -1,13 +1,45 @@
 import { View, TextInput, StyleSheet, Image } from "react-native";
 import Button from "../componets/Button";
 import { GlobalStyles } from "../constants/style";
-import { fetchPictures } from "../util/http";
-
+import { constants, sendInfoToBackend, setClientToken } from "../util/http";
+import React, { useState } from "react";
+import { showAlert } from "../util/helper";
+import qs from "qs";
 function LoginScreen({ navigation }) {
+  const [phone, setPhone] = useState("");
+  const [otp, setOtp] = useState("");
+  const [otpToken, setOtpToken] = useState("");
+  const [token, setToken] = useState("");
+
   async function handleSignin() {
-    const res = await fetchPictures("2022-03-05", "2022-03-10");
-    console.log(res);
-    //navigation.navigate('LandingNav', { screen: 'MyTabs' })
+    let body = {
+      otpToken: otpToken,
+      OTP: otp,
+    };
+    const res = await sendInfoToBackend(
+      constants.endPoints.verifyOTP,
+      qs.stringify(body)
+    );
+    if (res.data.status) {
+      console.log(res.data);
+      setClientToken(res.data.data.jwtToken);
+      navigation.navigate("LandingNav");
+    } else {
+      showAlert("Error", res.data.message);
+    }
+  }
+  async function sendOTP() {
+    const formData = new FormData();
+    formData.append("phone", phone);
+    const res = await sendInfoToBackend(constants.endPoints.login, formData);
+    if (res.data.status) {
+      showAlert("Success", res.data.message);
+      setOtpToken(res.data.data.otpToken);
+      setToken(res.data.data.jwtToken);
+      setClientToken(res.data.data.jwtToken);
+    } else {
+      showAlert("Error", res.data.message);
+    }
   }
   function handleSignup() {
     navigation.navigate("Signup");
@@ -27,12 +59,15 @@ function LoginScreen({ navigation }) {
             placeholder="PHONE"
             keyboardType="numeric"
             maxLength={10}
+            onChangeText={setPhone}
             placeholderTextColor={GlobalStyles.colors.accent700}
           />
           <TextInput
             style={styles.input}
             placeholder="OTP"
             keyboardType="numeric"
+            onFocus={sendOTP}
+            onChangeText={setOtp}
             placeholderTextColor={GlobalStyles.colors.accent700}
           />
         </View>
