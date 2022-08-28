@@ -5,21 +5,25 @@ import { constants, sendInfoToBackend, setClientToken } from "../util/http";
 import React, { useState } from "react";
 import { showAlert } from "../util/helper";
 import qs from "qs";
+import Indicator from "../componets/ActivityIndicator";
+import { ActivityIndicator } from "react-native-paper";
 function LoginScreen({ navigation }) {
   const [phone, setPhone] = useState("");
   const [otp, setOtp] = useState("");
   const [otpToken, setOtpToken] = useState("");
-  const [token, setToken] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   async function handleSignin() {
     let body = {
       otpToken: otpToken,
       OTP: otp,
     };
+    setIsLoading(true);
     const res = await sendInfoToBackend(
       constants.endPoints.verifyOTP,
       qs.stringify(body)
     );
+    setIsLoading(false);
     if (res.data.status) {
       console.log(res.data);
       setClientToken(res.data.data.jwtToken);
@@ -31,11 +35,12 @@ function LoginScreen({ navigation }) {
   async function sendOTP() {
     const formData = new FormData();
     formData.append("phone", phone);
+    setIsLoading(true);
     const res = await sendInfoToBackend(constants.endPoints.login, formData);
+    setIsLoading(false);
     if (res.data.status) {
       showAlert("Success", res.data.message);
       setOtpToken(res.data.data.otpToken);
-      setToken(res.data.data.jwtToken);
       setClientToken(res.data.data.jwtToken);
     } else {
       showAlert("Error", res.data.message);
@@ -47,11 +52,13 @@ function LoginScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
+      {isLoading && <Indicator />}
       <View style={styles.imgContainer}>
         <View style={styles.imgContainer2}>
           <Image style={styles.image} source={require("../assets/logo.png")} />
         </View>
       </View>
+
       <View style={styles.buttonContainer}>
         <View style={styles.inputContainer}>
           <TextInput
@@ -62,6 +69,7 @@ function LoginScreen({ navigation }) {
             onChangeText={setPhone}
             placeholderTextColor={GlobalStyles.colors.accent700}
           />
+
           <TextInput
             style={styles.input}
             placeholder="OTP"
@@ -86,7 +94,6 @@ export default LoginScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: "100%",
     backgroundColor: GlobalStyles.colors.primaryYellow,
     justifyContent: "center",
     alignItems: "center",
