@@ -66,7 +66,6 @@ function MyTabs() {
       activeColor={GlobalStyles.colors.primaryRed}
       barStyle={{ backgroundColor: GlobalStyles.colors.primaryYellow }}
       screenOptions={{
-        headerShown: true,
         inactiveColor: "black",
         activeColor: GlobalStyles.colors.primaryRed,
       }}

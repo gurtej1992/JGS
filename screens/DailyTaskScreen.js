@@ -6,13 +6,21 @@ import {
   StyleSheet,
   ScrollView,
 } from "react-native";
+import React, { useState, useEffect } from "react";
 import { GlobalStyles } from "../constants/style";
 import { Switch, Divider, Avatar } from "react-native-paper";
-import { color } from "react-native-reanimated";
+import PageHeader from "../componets/PageHeader";
+function DailyTaskScreen({ navigation }) {
+  useEffect(() => {
+    navigation.setOptions({
+      title: "Ma",
+    });
+  }, [navigation]);
 
-function DailyTaskScreen() {
+  function saveInfo() {}
   return (
     <View style={styles.container}>
+      <PageHeader></PageHeader>
       <ScrollView bounces={false}>
         <View style={styles.header}>
           <View style={styles.textView}>

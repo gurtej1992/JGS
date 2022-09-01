@@ -1,5 +1,6 @@
 import Axios from "axios";
 import axios from "axios";
+import { setToken } from "./helper";
 
 export const constants = {
   base: {
@@ -26,6 +27,7 @@ let APIKit = axios.create({
 // Set JSON Web Token in Client to be included in all calls
 export const setClientToken = (token) => {
   console.log("------- " + token);
+  setToken(token);
   APIKit.interceptors.request.use(function (config) {
     config.headers.Authorization = token;
     return config;

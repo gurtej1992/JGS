@@ -46,6 +46,7 @@ function LoginScreen({ navigation }) {
     }
   }
   function handleSignup() {
+    //navigation.navigate("Signup");
     navigation.navigate("Signup");
   }
 
