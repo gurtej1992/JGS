@@ -293,7 +293,7 @@ function DailyTaskScreen({ navigation }) {
               value={getTotalSamayik}
             ></TextInput>
           </View>
-          <Divider style={styles.divider} />
+          <Divider style={styles.divider2} />
           <View style={styles.textView}>
             <Text style={[styles.text, { color: "black" }]}>कुल एकासन</Text>
             <TextInput
@@ -302,7 +302,7 @@ function DailyTaskScreen({ navigation }) {
               value={getTotalAkasan}
             ></TextInput>
           </View>
-          <Divider style={styles.divider} />
+          <Divider style={styles.divider2} />
           <View style={styles.textView}>
             <Text style={[styles.text, { color: "black" }]}>कुल आयम्बिल</Text>
             <TextInput
@@ -311,7 +311,7 @@ function DailyTaskScreen({ navigation }) {
               value={getTotalAmbil}
             ></TextInput>
           </View>
-          <Divider style={styles.divider} />
+          <Divider style={styles.divider2} />
           <View style={styles.textView}>
             <Text style={[styles.text, { color: "black" }]}>कुल उपवास</Text>
             <TextInput
@@ -320,7 +320,7 @@ function DailyTaskScreen({ navigation }) {
               value={getTotalUpwas}
             ></TextInput>
           </View>
-          <Divider style={styles.divider} />
+          <Divider style={styles.divider2} />
           <View style={styles.textView}>
             <Text style={[styles.text, { color: "black" }]}>कुल चौविहार</Text>
             <TextInput
@@ -329,7 +329,7 @@ function DailyTaskScreen({ navigation }) {
               value={getTotalChauvihar}
             ></TextInput>
           </View>
-          <Divider style={styles.divider} />
+          <Divider style={styles.divider2} />
           <View style={styles.textView}>
             <Text style={[styles.text, { color: "black" }]}>कुल तिविहार</Text>
             <TextInput
@@ -368,6 +368,7 @@ const styles = StyleSheet.create({
   divider: {
     backgroundColor: GlobalStyles.colors.accent500,
   },
+  divider2: {},
   text: {
     fontSize: 15,
     fontWeight: "400",
