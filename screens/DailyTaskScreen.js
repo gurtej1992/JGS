@@ -11,12 +11,38 @@ import { GlobalStyles } from "../constants/style";
 import { Switch, Divider, Avatar } from "react-native-paper";
 import PageHeader from "../componets/PageHeader";
 function DailyTaskScreen({ navigation }) {
-  function saveInfo() {}
+  const [isAkasanEnabled, setAkasanEnabled] = useState(false);
+  const [isAmbilEnabled, setAmbilEnabled] = useState(false);
+  const [isUpwasEnabled, setUpwasEnabled] = useState(false);
+  const [isChauviharEnabled, setChauviharEnabled] = useState(false);
+  const [isTiviharEnabled, setTiviharEnabled] = useState(false);
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+  function saveInfo() {
+    console.log("saved");
+  }
+  function toggleSwitch(value) {
+    switch (value) {
+      case "Akasan":
+        break;
+      case "Ambil":
+        break;
+      case "Upwas":
+        break;
+      case "Chauvihar":
+        break;
+      case "Tivihar":
+        break;
+      default:
+        break;
+    }
+  }
   return (
     <View style={styles.container}>
       <PageHeader
         title="Daily Tasks"
         rightIcon={"save"}
+        rightButtonAction={saveInfo}
         navigation={navigation}
       ></PageHeader>
       <ScrollView bounces={false}>
@@ -55,7 +81,12 @@ function DailyTaskScreen({ navigation }) {
               />
               <Text style={styles.text}>एकासन किया?</Text>
             </View>
-            <Switch status="unchecked" color="red" />
+            <Switch
+              status="unchecked"
+              color="red"
+              onValueChange={toggleSwitch}
+              value={isEnabled}
+            />
           </View>
           <Divider style={styles.divider} />
           <View style={styles.textView}>
