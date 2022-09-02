@@ -20,7 +20,7 @@ function CustomDrawerContent(props) {
           }}
           style={styles.profileImg}
         />
-        <Text style={styles.txtName}>RAJAT JAIN</Text>
+        <Text style={styles.txtName}>Rajat Jain</Text>
       </View>
       <DrawerContentScrollView {...props}>
         <DrawerItemList {...props} />
@@ -116,5 +116,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     color: "white",
     fontSize: 25,
+    fontFamily: "AvenirNextCondensed-Medium",
   },
 });
