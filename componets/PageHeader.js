@@ -3,10 +3,21 @@ import { StyleSheet, Text, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { GlobalStyles } from "../constants/style";
+import { clickProps } from "react-native-web/dist/cjs/modules/forwardedProps";
+import { Ionicons } from "@expo/vector-icons";
 
-export default function PageHeader({ title, navigation, rightIcon }) {
+export default function PageHeader({
+  rightButtonAction,
+  title,
+  navigation,
+  rightIcon,
+  backButton,
+}) {
   const openMenu = () => {
     navigation.openDrawer();
+  };
+  const goBack = () => {
+    navigation.goBack();
   };
 
   return (
@@ -14,12 +25,22 @@ export default function PageHeader({ title, navigation, rightIcon }) {
       style={{ backgroundColor: GlobalStyles.colors.primaryRed, height: 90 }}
     >
       <View style={styles.header}>
-        <MaterialIcons
-          name="menu"
-          size={28}
-          onPress={openMenu}
-          style={styles.icon}
-        />
+        {backButton ? (
+          <Ionicons
+            name="chevron-back"
+            size={28}
+            onPress={goBack}
+            style={styles.icon}
+          />
+        ) : (
+          <MaterialIcons
+            name="menu"
+            size={28}
+            onPress={openMenu}
+            style={styles.icon}
+          />
+        )}
+
         <View>
           <Text style={styles.headerText}>{title}</Text>
         </View>
@@ -27,7 +48,7 @@ export default function PageHeader({ title, navigation, rightIcon }) {
           <MaterialIcons
             name={rightIcon}
             size={28}
-            onPress={openMenu}
+            onPress={rightButtonAction}
             style={styles.icon}
           />
         ) : (
@@ -50,6 +71,7 @@ const styles = StyleSheet.create({
   },
   headerText: {
     alignSelf: "center",
+    margin: "auto",
     fontWeight: "bold",
     fontSize: 18,
     color: "white",

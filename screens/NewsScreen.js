@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { GlobalStyles } from "../constants/style";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import PageHeader from "../componets/PageHeader";
 
 function Item({ item }) {
   return (
@@ -111,10 +112,11 @@ var data = [
     photo: "https://randomuser.me/api/portraits/women/26.jpg",
   },
 ];
-function NewsScreen() {
+function NewsScreen({ navigation }) {
   const [data2, setData] = React.useState(data);
   return (
     <View style={styles.container}>
+      <PageHeader title="News" navigation={navigation}></PageHeader>
       <FlatList
         style={{ flex: 1 }}
         data={data2}

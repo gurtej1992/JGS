@@ -1,10 +1,12 @@
 import { View, Image, Text, StyleSheet, ScrollView } from "react-native";
 import { TextInput } from "react-native-paper";
+import PageHeader from "../componets/PageHeader";
 import { GlobalStyles } from "../constants/style";
 
-function ProfileScreen() {
+function ProfileScreen({ navigation }) {
   return (
     <View style={styles.container}>
+      <PageHeader title={"Profile"} backButton={true} navigation={navigation} />
       <ScrollView bounces={false}>
         <View style={styles.header}>
           <Image
