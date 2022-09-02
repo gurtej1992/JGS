@@ -6,7 +6,7 @@ import { GlobalStyles } from "../constants/style";
 function ProfileScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <PageHeader title={"Profile"} backButton={true} navigation={navigation} />
+      <PageHeader title={"Profile"} navigation={navigation} />
       <ScrollView bounces={false}>
         <View style={styles.header}>
           <Image

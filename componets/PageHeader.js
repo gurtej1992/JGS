@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { GlobalStyles } from "../constants/style";
-import { clickProps } from "react-native-web/dist/cjs/modules/forwardedProps";
 import { Ionicons } from "@expo/vector-icons";
 
 export default function PageHeader({

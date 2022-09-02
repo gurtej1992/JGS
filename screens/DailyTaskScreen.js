@@ -38,18 +38,15 @@ function DailyTaskScreen({ navigation }) {
       let response = await getToken();
       if (response != null) {
         setToken(response);
+        getData(response);
       }
     }
-    const token = getToken().then((response) => {
-      getData(response);
-    });
     async function getData(ntoken) {
       setIsLoading(true);
       const res = await getInfoFromBackend(
         constants.endPoints.getTasks,
         ntoken
       );
-
       setDataSource(res.data);
       setIsLoading(false);
     }
@@ -61,7 +58,8 @@ function DailyTaskScreen({ navigation }) {
   }, [dataSource]);
 
   function setDataToUI() {
-    if (dataSource != []) {
+    if (dataSource.todaysTask != null) {
+      console.log("-------" + dataSource);
       setAkasanEnabled(dataSource.todaysTask.akasana == 1 ? true : false);
       setAmbilEnabled(dataSource.todaysTask.ayambil == 1 ? true : false);
       setChauviharEnabled(dataSource.todaysTask.chauvihaar == 1 ? true : false);
