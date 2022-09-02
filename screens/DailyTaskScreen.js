@@ -16,22 +16,26 @@ function DailyTaskScreen({ navigation }) {
   const [isUpwasEnabled, setUpwasEnabled] = useState(false);
   const [isChauviharEnabled, setChauviharEnabled] = useState(false);
   const [isTiviharEnabled, setTiviharEnabled] = useState(false);
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+  const [getSamayik, setSamayik] = useState("0");
   function saveInfo() {
     console.log("saved");
   }
   function toggleSwitch(value) {
     switch (value) {
       case "Akasan":
+        setAkasanEnabled((previousState) => !previousState);
         break;
       case "Ambil":
+        setAmbilEnabled((previousState) => !previousState);
         break;
       case "Upwas":
+        setUpwasEnabled((previousState) => !previousState);
         break;
       case "Chauvihar":
+        setChauviharEnabled((previousState) => !previousState);
         break;
       case "Tivihar":
+        setTiviharEnabled((previousState) => !previousState);
         break;
       default:
         break;
@@ -63,7 +67,11 @@ function DailyTaskScreen({ navigation }) {
               <Text style={styles.text}>कितनी सामायिक की?</Text>
             </View>
 
-            <TextInput style={styles.input}>0</TextInput>
+            <TextInput
+              style={styles.input}
+              onChangeText={setSamayik}
+              value={getSamayik}
+            ></TextInput>
           </View>
           <Divider style={styles.divider} />
           <View style={styles.textView}>
@@ -84,8 +92,8 @@ function DailyTaskScreen({ navigation }) {
             <Switch
               status="unchecked"
               color="red"
-              onValueChange={toggleSwitch}
-              value={isEnabled}
+              onValueChange={toggleSwitch.bind(this, "Akasan")}
+              value={isAkasanEnabled}
             />
           </View>
           <Divider style={styles.divider} />
@@ -104,7 +112,12 @@ function DailyTaskScreen({ navigation }) {
               />
               <Text style={styles.text}>आयम्बिल किया?</Text>
             </View>
-            <Switch status="unchecked" color="red" />
+            <Switch
+              status="unchecked"
+              color="red"
+              onValueChange={toggleSwitch.bind(this, "Ambil")}
+              value={isAmbilEnabled}
+            />
           </View>
           <Divider style={styles.divider} />
           <View style={styles.textView}>
@@ -122,7 +135,12 @@ function DailyTaskScreen({ navigation }) {
               />
               <Text style={styles.text}>उपवास किया?</Text>
             </View>
-            <Switch status="unchecked" color="red" />
+            <Switch
+              status="unchecked"
+              color="red"
+              onValueChange={toggleSwitch.bind(this, "Upwas")}
+              value={isUpwasEnabled}
+            />
           </View>
           <Divider style={styles.divider} />
           <View style={styles.textView}>
@@ -140,7 +158,12 @@ function DailyTaskScreen({ navigation }) {
               />
               <Text style={styles.text}>चौविहार किया?</Text>
             </View>
-            <Switch status="unchecked" color="red" />
+            <Switch
+              status="unchecked"
+              color="red"
+              onValueChange={toggleSwitch.bind(this, "Chauvihar")}
+              value={isChauviharEnabled}
+            />
           </View>
           <Divider style={styles.divider} />
           <View style={styles.textView}>
@@ -158,7 +181,12 @@ function DailyTaskScreen({ navigation }) {
               />
               <Text style={styles.text}>तिविहार किया?</Text>
             </View>
-            <Switch status="unchecked" color="red" />
+            <Switch
+              status="unchecked"
+              color="red"
+              onValueChange={toggleSwitch.bind(this, "Tivihar")}
+              value={isTiviharEnabled}
+            />
           </View>
         </View>
         <View style={styles.body}>
