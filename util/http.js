@@ -36,9 +36,13 @@ export const setClientToken = (token) => {
 
 export default APIKit;
 
-export async function getInfoFromBackend(url) {
-  const response = Axios.get(constants.base.url + url).catch((error) =>
-    console.error(error)
+export async function getInfoFromBackend(url, token = "") {
+  const headers = {
+    Authorization: token,
+  };
+  console.log(headers);
+  const response = Axios.get(constants.base.url + url, { headers }).catch(
+    (error) => console.error(error)
   );
   return response;
 }
