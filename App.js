@@ -40,6 +40,7 @@ function LandingNav() {
   return (
     <Drawer.Navigator
       screenOptions={{
+        headerShown: false,
         headerStyle: {
           backgroundColor: GlobalStyles.colors.primaryRed,
         },

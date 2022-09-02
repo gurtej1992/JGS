@@ -11,16 +11,14 @@ import { GlobalStyles } from "../constants/style";
 import { Switch, Divider, Avatar } from "react-native-paper";
 import PageHeader from "../componets/PageHeader";
 function DailyTaskScreen({ navigation }) {
-  useEffect(() => {
-    navigation.setOptions({
-      title: "Ma",
-    });
-  }, [navigation]);
-
   function saveInfo() {}
   return (
     <View style={styles.container}>
-      <PageHeader></PageHeader>
+      <PageHeader
+        title="Daily Tasks"
+        rightIcon={"save"}
+        navigation={navigation}
+      ></PageHeader>
       <ScrollView bounces={false}>
         <View style={styles.header}>
           <View style={styles.textView}>

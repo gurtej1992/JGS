@@ -1,21 +1,61 @@
-import * as React from "react";
-import { Appbar } from "react-native-paper";
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { GlobalStyles } from "../constants/style";
 
-const PageHeader = () => {
-  const _goBack = () => console.log("Went back");
-
-  const _handleSearch = () => console.log("Searching");
-
-  const _handleMore = () => console.log("Shown more");
+export default function PageHeader({ title, navigation, rightIcon }) {
+  const openMenu = () => {
+    navigation.openDrawer();
+  };
 
   return (
-    <Appbar.Header>
-      <Appbar.BackAction onPress={_goBack} />
-      <Appbar.Content title="Title" />
-      <Appbar.Action icon="magnify" onPress={_handleSearch} />
-      <Appbar.Action icon="dots-vertical" onPress={_handleMore} />
-    </Appbar.Header>
+    <SafeAreaView
+      style={{ backgroundColor: GlobalStyles.colors.primaryRed, height: 90 }}
+    >
+      <View style={styles.header}>
+        <MaterialIcons
+          name="menu"
+          size={28}
+          onPress={openMenu}
+          style={styles.icon}
+        />
+        <View>
+          <Text style={styles.headerText}>{title}</Text>
+        </View>
+        {rightIcon != null ? (
+          <MaterialIcons
+            name={rightIcon}
+            size={28}
+            onPress={openMenu}
+            style={styles.icon}
+          />
+        ) : (
+          <View />
+        )}
+      </View>
+    </SafeAreaView>
   );
-};
+}
 
-export default PageHeader;
+const styles = StyleSheet.create({
+  header: {
+    paddingHorizontal: 15,
+    backgroundColor: GlobalStyles.colors.primaryRed,
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    height: 30,
+  },
+  headerText: {
+    alignSelf: "center",
+    fontWeight: "bold",
+    fontSize: 18,
+    color: "white",
+    letterSpacing: 1,
+  },
+  icon: {
+    color: "white",
+  },
+});
