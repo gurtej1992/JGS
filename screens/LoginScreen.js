@@ -32,10 +32,14 @@ function LoginScreen({ navigation }) {
     }
   }
   async function sendOTP() {
-    const formData = new FormData();
-    formData.append("phone", phone);
+    let body = {
+      phone: phone,
+    };
     setIsLoading(true);
-    const res = await sendInfoToBackend(constants.endPoints.login, formData);
+    const res = await sendInfoToBackend(
+      constants.endPoints.login,
+      qs.stringify(body)
+    );
     setIsLoading(false);
     if (res.data.status) {
       showAlert("Success", res.data.message);

@@ -4,7 +4,14 @@ import {
   DrawerItemList,
   DrawerItem,
 } from "@react-navigation/drawer";
-import { View, Image, Text, StyleSheet, ScrollView } from "react-native";
+import {
+  View,
+  Image,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Platform,
+} from "react-native";
 import { GlobalStyles } from "../constants/style";
 import ProfileScreen from "../screens/ProfileScreen";
 import MyTabs from "./TabNav";
@@ -116,6 +123,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     color: "white",
     fontSize: 25,
-    fontFamily: "AvenirNextCondensed-Medium",
+    fontFamily: Platform.OS === "ios" ? "AvenirNextCondensed-Medium" : "Roboto",
   },
 });

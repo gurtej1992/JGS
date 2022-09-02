@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Platform, StyleSheet, Text, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { GlobalStyles } from "../constants/style";
@@ -29,14 +29,14 @@ export default function PageHeader({
             name="chevron-back"
             size={28}
             onPress={goBack}
-            style={styles.icon}
+            style={styles.iconL}
           />
         ) : (
           <MaterialIcons
             name="menu"
             size={28}
             onPress={openMenu}
-            style={styles.icon}
+            style={styles.iconL}
           />
         )}
 
@@ -48,7 +48,7 @@ export default function PageHeader({
             name={rightIcon}
             size={28}
             onPress={rightButtonAction}
-            style={styles.icon}
+            style={styles.iconR}
           />
         ) : (
           <View />
@@ -60,12 +60,13 @@ export default function PageHeader({
 
 const styles = StyleSheet.create({
   header: {
+    marginTop: Platform.OS == "ios" ? 0 : 10,
     paddingHorizontal: 15,
     backgroundColor: GlobalStyles.colors.primaryRed,
     width: "100%",
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "center",
     height: 30,
   },
   headerText: {
@@ -76,7 +77,14 @@ const styles = StyleSheet.create({
     color: "white",
     letterSpacing: 1,
   },
-  icon: {
+  iconL: {
     color: "white",
+    position: "absolute",
+    left: 10,
+  },
+  iconR: {
+    color: "white",
+    position: "absolute",
+    right: 10,
   },
 });
