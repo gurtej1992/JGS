@@ -70,34 +70,16 @@ function HomeScreen({ navigation }) {
           <View
             style={{ backgroundColor: "black", width: "100%", height: 1 }}
           ></View>
-          <View style={{ alignItems: "center", padding: 10 }}>
+          {/* <View style={{ alignItems: "center", padding: 10 }}>
             <Text style={styles.txtHindi}>आज का विचार</Text>
-          </View>
-          <View
+          </View> */}
+          {/* <View
             style={{
               backgroundColor: GlobalStyles.colors.accent1000,
               width: "100%",
               height: 1,
             }}
-          ></View>
-        </View>
-        <View style={styles.body}>
-          <Card>
-            <Card.Content>
-              <Title>त्याग पच्चखाण</Title>
-              <Paragraph>
-                आज के त्याग / पच्चखाण *👉अरवी, अंजीर ,अंजीर की बरफी* 👉आज की
-                माला श्री अभिननदन नमः 👉आज का विशेष पच्चखाण आलस नही करना 👉हो
-                सके तो दिन छिपने से पहले भोजन कर ले।{" "}
-              </Paragraph>
-            </Card.Content>
-          </Card>
-          <Card style={{ marginTop: 20 }}>
-            <Card.Cover source={{ uri: "https://picsum.photos/700" }} />
-            <Card.Content>
-              <Title>गुरुजी लोकेशन</Title>
-            </Card.Content>
-          </Card>
+          ></View> */}
         </View>
         <View style={styles.footer}>
           <TouchableOpacity onPress={handleOpenUrl.bind(this, "f")}>
@@ -115,6 +97,24 @@ function HomeScreen({ navigation }) {
           <TouchableOpacity onPress={handleOpenUrl.bind(this, "y")}>
             <Avatar.Icon style={styles.icon} size={52} icon="youtube" />
           </TouchableOpacity>
+        </View>
+        <View style={styles.body}>
+          <Card>
+            <Card.Content>
+              <Title>त्याग पच्चखाण</Title>
+              <Paragraph>
+                आज के त्याग / पच्चखाण *👉अरवी, अंजीर ,अंजीर की बरफी* 👉आज की
+                माला श्री अभिननदन नमः 👉आज का विशेष पच्चखाण आलस नही करना 👉हो
+                सके तो दिन छिपने से पहले भोजन कर ले।{" "}
+              </Paragraph>
+            </Card.Content>
+          </Card>
+          {/* <Card style={{ marginTop: 20 }}>
+            <Card.Cover source={{ uri: "https://picsum.photos/700" }} />
+            <Card.Content>
+              <Title>गुरुजी लोकेशन</Title>
+            </Card.Content>
+          </Card> */}
         </View>
       </ScrollView>
     </View>
@@ -141,6 +141,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     padding: 5,
     flex: 2,
+    marginTop: 10,
   },
   txtHindi: {
     marginTop: 2,

@@ -7,6 +7,7 @@ import LoginScreen from "./screens/LoginScreen";
 import SignupScreen from "./screens/SignupScreen";
 import WelcomeScreen from "./screens/WelcomeScreen";
 import LandingNav from "./componets/DrawerNav";
+import NewsDetailScreen from "./screens/NewsDetailScreen";
 const Stack = createStackNavigator();
 
 function MyStack() {
@@ -18,6 +19,7 @@ function MyStack() {
       initialRouteName={"Welcome"}
     >
       <Stack.Screen name="Signup" component={SignupScreen} />
+      <Stack.Screen name="NewsDetailScreen" component={NewsDetailScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Welcome" component={WelcomeScreen} />
       <Stack.Screen name="LandingNav" component={LandingNav} />

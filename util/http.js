@@ -16,6 +16,7 @@ export const constants = {
     saveTasks: "Dailytasks/saveUsersTask",
     getBooks: "Otherlinks/getBooks",
     getBhajans: "Otherlinks/getBhajans",
+    getEvents: "Otherlinks/getevents",
   },
 };
 // Create axios client, pre-configured with baseURL
