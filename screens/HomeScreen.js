@@ -6,12 +6,17 @@ import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
 import Indicator from "../componets/ActivityIndicator";
 import PageHeader from "../componets/PageHeader";
 import { GlobalStyles } from "../constants/style";
+import { niyam } from "../util/helper";
 import { constants, getInfoFromBackend } from "../util/http";
 
 function HomeScreen({ navigation }) {
   const [dataSourceSocial, setDataSourceSocial] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const [currentDate, setCurrentDate] = useState("");
   useEffect(() => {
+    var date = new Date().getDate();
+    setCurrentDate(date);
     async function getData() {
       setIsLoading(true);
       const res = await getInfoFromBackend(constants.endPoints.getSocialLinks);
@@ -102,11 +107,7 @@ function HomeScreen({ navigation }) {
           <Card>
             <Card.Content>
               <Title>त्याग पच्चखाण</Title>
-              <Paragraph>
-                आज के त्याग / पच्चखाण *👉अरवी, अंजीर ,अंजीर की बरफी* 👉आज की
-                माला श्री अभिननदन नमः 👉आज का विशेष पच्चखाण आलस नही करना 👉हो
-                सके तो दिन छिपने से पहले भोजन कर ले।{" "}
-              </Paragraph>
+              <Paragraph>{niyam[currentDate]}</Paragraph>
             </Card.Content>
           </Card>
           {/* <Card style={{ marginTop: 20 }}>
